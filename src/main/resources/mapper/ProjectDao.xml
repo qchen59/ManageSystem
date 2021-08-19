@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为ProjectDao接口方法提供sql语句配置 -->
+<mapper namespace="cn.managesystem.dao.ProjectDao">
+
+    <select id="findProjectById" resultType="cn.managesystem.entity.Project" parameterType="int">
+        SELECT * FROM project WHERE id = #{id}
+    </select>
+
+    <select id="getProjects" resultType="cn.managesystem.entity.Project">
+        SELECT * FROM project
+    </select>
+
+    <select id="saveProject" parameterType="cn.managesystem.entity.Project">
+        insert into project(id, pname, architect, inst, designPlan, currentStage, nextStage,
+                             buildingModel, constructionModel, HVACModel, waterSDModel,
+                            airModel, elModel, generalModel,createTime, updateTime) values(#{id}, #{pname}, #{architect}, #{inst}, #{designPlan}, #{currentStage}, #{nextStage},
+                                                                     #{buildingModel}, #{constructionModel}, #{HVACModel}, #{waterSDModel},
+                                                                    #{airModel}, #{elModel}, #{generalModel}, #{createTime}, #{updateTime})
+    </select>
+
+    <update id="updateProject" parameterType="cn.managesystem.entity.Project">
+        UPDATE project SET
+            pname=#{pname},
+            architect=#{architect},
+            inst=#{inst},
+            designPlan=#{designPlan},
+            currentStage=#{currentStage},
+            nextStage=#{nextStage},
+            buildingModel=#{buildingModel},
+            constructionModel=#{constructionModel},
+            HVACModel=#{HVACModel},
+            waterSDModel=#{waterSDModel},
+            airModel=#{airModel},
+            elModel=#{elModel},
+            generalModel=#{generalModel},
+            updateTime=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+
+</mapper>

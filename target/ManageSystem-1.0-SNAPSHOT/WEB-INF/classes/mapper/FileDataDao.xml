@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为ProjectDao接口方法提供sql语句配置 -->
+<mapper namespace="cn.managesystem.dao.FileDataDao">
+
+    <select id="getFileData" resultType="cn.managesystem.entity.FileData">
+        SELECT * FROM filedata WHERE projectId = #{projectId} AND fileType = #{fileType}
+    </select>
+
+    <select id="getFileDataById" resultType="cn.managesystem.entity.FileData" parameterType="int">
+        SELECT * FROM filedata WHERE id = #{id}
+    </select>
+
+
+
+    <select id="saveFileData" parameterType="cn.managesystem.entity.FileData">
+        insert into filedata(id, fileType, fileName, projectId, uploadTime) values(#{id}, #{fileType}, #{fileName}, #{projectId}, #{uploadTime})
+    </select>
+
+
+
+</mapper>
